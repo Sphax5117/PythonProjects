@@ -1,7 +1,5 @@
 from tkinter import *
-#add fonctions
-
-
+from tkinter import messagebox
 
 # create
 window = Tk()
@@ -16,9 +14,20 @@ window.maxsize(300, 400)
 
 frame_1 = Frame(window)
 
+#add the global expression
+
+expression = ""
+equation = StringVar()
+expression_field = Entry(window, textvariable=equation)
+# add fonctions
+
+def msg():
+    messagebox.showinfo('Message', 'SLurp')
+
+
 # add a button
 
-butt_1 = Button(window, text="1", bg="#c8bebc", width=4)
+butt_1 = Button(window, text="1", bg="#c8bebc", width=4, command=msg)
 butt_2 = Button(window, text="2", bg="#c8bebc", width=4)
 butt_3 = Button(window, text="3", bg="#c8bebc", width=4)
 butt_4 = Button(window, text="4", bg="#c8bebc", width=4)
@@ -68,7 +77,7 @@ butt_plus.place(x=120, y=150)
 butt_divide.place(x=40, y=350)
 butt_multiply.place(x=40, y=150)
 
-#window.iconbitmap("logo.ico") test on windows
+# window.iconbitmap("logo.ico") test on windows
 
 # show
 window.mainloop()
