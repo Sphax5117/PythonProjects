@@ -2,23 +2,24 @@
 import math
 import random
 
-
-
+""" Ce script décrit les bases des fonctions. A noter que les constantes
+s'écrivent en MAJUSCULE
+"""
 
 def fonctionfonction(x):
     """La fonction renvoie le résultat de 1/1+x^2"""
     assert -1 <= x <+ 1, "X n'est pas compris entre -1 et 1"
-    r = 1/x + x**2
-    return r
+    R = 1/x + x**2
+    return R
 
 x = float(input("Entrez votre x (-1 <= x <+ 1) : "))
 print(f"Le résultat est : {fonctionfonction(x)}")
 
 def perim_surface(r):
     assert r > 0, "votre rayon est <= 0"
-    perim = 2*math.pi*r
-    srf = math.pi*r**2
-    return perim, srf
+    PERIMETRE = 2*math.pi*r
+    SRF = math.pi*r**2
+    return PERIMETRE, SRF
 
 
 rInput = float(input("Entrez votre rayon : "))
@@ -28,11 +29,11 @@ print(f"le perim de votre cercle est {perim}")
 print(f"la surface de votre cercle est {srf}")
 
 def mean_notes():
-    liste = [random.randint(5,20) for i in range(35)]
-    sum = 0
+    LISTE = [random.randint(5,20) for i in range(35)]
+    SUM = 0
     for i in range(35):
-        sum += liste[i]
-    finalMean = sum/35
-    return finalMean
+        SUM += LISTE[i]
+    FINALMEAN = SUM/35
+    return round(FINALMEAN)
 
 print(f"La moyenne est de : {mean_notes()}")
