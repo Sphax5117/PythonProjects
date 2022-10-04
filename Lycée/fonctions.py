@@ -30,10 +30,41 @@ print(f"la surface de votre cercle est {srf}")
 
 def mean_notes():
     LISTE = [random.randint(5,20) for i in range(35)]
+    print(LISTE)
     SUM = 0
     for i in range(35):
         SUM += LISTE[i]
     FINALMEAN = SUM/35
     return round(FINALMEAN)
 
+def chiffres(a):
+    digits = len(str(a))
+    print(f"Il y a {digits} chiffres dans le nombre {a}")
+
+def syracuse(a):
+    assert a>0, "Le nombre doit être strictement positif"
+    while a>1:
+        if a % 2 == 0:
+            a = a//2
+            print(a)
+        elif a%2 != 0:
+            a = a*3 + 1
+            print(a)
+    print(a)
+
+
+def fibonnaci(n):
+    '''
+    La fonction renvoie la liste des n premiers termes de la suite inférieurs
+    à 1000.
+    '''
+    under1000 = [0,1]
+    for i in range(n-2):
+        if under1000[-1] <= 980:
+            under1000.append(under1000[i] + under1000[i+1])
+    print(under1000)
+
 print(f"La moyenne est de : {mean_notes()}")
+chiffres(5615811)
+syracuse(12)
+fibonnaci(20)
