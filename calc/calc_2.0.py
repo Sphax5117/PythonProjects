@@ -6,7 +6,7 @@ def leaving():
     if qds == "1":
         quit()
     else:
-        leave = True
+        leave = True;
 
 
 print("Welcome to the version 2.0 of my calculator !")
