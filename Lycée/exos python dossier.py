@@ -1,5 +1,9 @@
+import numpy as np
 ##########################Exercice 3#############################
 #1) 
+
+from tkinter import N
+
 
 def minimum(a):
     min = 20
@@ -81,4 +85,38 @@ def position_maximum_multiples(a):
 
 assert position_maximum_multiples([-3,5,-9,-9,4,5]) == [1, 5], "/!\ position_maximum_multiple()"
 
-###################################Exercice 5########################""
+###################################Exercice 5############################
+
+def moyenne(a):
+    moyenne = sum(a)/len(a)
+
+    return moyenne
+
+assert moyenne([3,5,-9,2,4]) == 1, "/!\ moyenne()"
+
+##################################Exercice 6############################
+
+def moy_pond(valeurs, coefficients):
+    productSum = 0
+    efTotal = 0
+    for i in range(len(valeurs)):
+        productSum += valeurs[i] * coefficients[i]
+    for i in range(len(coefficients)):
+        efTotal += coefficients[i]
+    moy_ponde = productSum/efTotal
+
+    return moy_ponde
+
+assert moy_pond([10,16,5], [1,0.5,2]) == 8, "/!\ moy_pond()"
+
+###############################Exercice 7###############################
+
+def moy_geom(nombres):
+    xTimesx = np.prod(np.array(nombres))
+    n = len(nombres)
+    moy = xTimesx ** (1/n)
+
+    return round(moy)
+
+assert moy_geom([2, 4, 8]) == 4, "/!\ moy_geom"
+    
