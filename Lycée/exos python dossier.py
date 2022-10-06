@@ -1,15 +1,16 @@
+# Créé par t.hausmann, le 06/10/2022 en Python 3.7
 import numpy as np
 ##########################Exercice 3#############################
-#1) 
+#1)
 
 from tkinter import N
 
 
 def minimum(a):
-    min = 20
-    for i in range(len(a)):
-        if a[i] < min:
-            min = a[i]
+    min = a[0]
+    for i in a:
+        if i < min:
+            min = i
     return min
 
 assert minimum([-3,5,-9,-9,4]) == -9, "/!\ minimum"
@@ -17,7 +18,7 @@ assert minimum([-3,5,-9,-9,4]) == -9, "/!\ minimum"
 #2)
 
 def position_minimum(a):
-    min = 0
+    min = a[0]
     min_pos = 0
     for i in range(len(a)):
         if a[i] < min and a[i] != min:
@@ -27,7 +28,7 @@ def position_minimum(a):
 
 assert position_minimum([-3,5,-9,-9,4]) == 2, "/!\ position_minimum()"
 
-#3) 
+#3)
 
 def position_minimum_multiple(a):
     min_values = minimum(a)
@@ -51,7 +52,7 @@ assert position_minimum_multiple([-3,5,-9,-9,4,4]) == [2, 3], "/!\ position_mini
 #1)
 
 def maximum(a):
-    max = 0
+    max = a[0]
     for i in range(len(a)):
         if a[i] > max:
             max = a[i]
@@ -59,10 +60,10 @@ def maximum(a):
 
 assert maximum([-3,5,-9,-9,4]) == 5, "/!\ maximum"
 
-#2) 
+#2)
 
 def position_maximum(a):
-    max = 0
+    max = a[0]
     max_pos = 0
     for i in range(len(a)):
         if a[i] > max:
@@ -112,11 +113,158 @@ assert moy_pond([10,16,5], [1,0.5,2]) == 8, "/!\ moy_pond()"
 ###############################Exercice 7###############################
 
 def moy_geom(nombres):
-    xTimesx = np.prod(np.array(nombres))
+    xTimesx = 1
+    for i in nombres:
+        xTimesx = xTimesx*i
     n = len(nombres)
     moy = xTimesx ** (1/n)
 
     return round(moy)
 
 assert moy_geom([2, 4, 8]) == 4, "/!\ moy_geom"
-    
+
+
+
+##############################Exercice 8 ###############################
+
+#1)
+def contient_valeur(a,b):
+    isInList = False
+    for i in range(len(a)):
+        if a[i] == b:
+
+            isInList = True
+
+    return isInList
+
+assert contient_valeur([3,5,2], 5) == True, "/!\ contient_valeur()"
+assert contient_valeur([3,5,2], 0) == False, "/!\ contient_valeur()"
+
+#2)
+
+def position_valeur(a,b):
+    index = None
+    isInList = False
+    for i in range(len(a)):
+        if a[i] == b:
+            index = a.index(a[i])
+            isInList = True
+
+    return index
+
+assert position_valeur([5,3,5], 5) == 0, "position_valeur()"
+assert position_valeur([5,3,5], 0) == None, "position_valeur()"
+
+#3)
+
+def position_valeur_mult(a,b):
+    index = []
+    isInList = False
+    for i in range(0, len(a)):
+        if b == a[i]:
+            index.append(i)
+            isInList = True
+
+    return index
+
+assert position_valeur_mult([3,5,5], 5) == [1,2], "position_valeur_mult"
+assert position_valeur_mult([3,5,5], 0) == [], "position_valeur_mult"
+
+###################### Exercice 9 ############################
+
+def occurence(a,b):
+    occur = 0
+    for i in range(len(a)):
+        if a[i] == b:
+            occur += 1
+
+    return occur
+
+assert occurence([3,5,-9,5,4], 5) == 2; "occurence()"
+assert occurence([3,5,-9,5,4], 1) == 0; "occurence()"
+
+###################### Exercice 10###########################
+
+#1)
+
+def entremele(liste1, liste2):
+    finaList = []
+    for i in range(len(liste1)):
+        finaList.append(liste1[i])
+        finaList.append(liste2[i])
+    return finaList
+
+assert entremele([1,2,3], [5,6,7]) == [1,5,2,6,3,7]; "entremele()"
+
+def entremele2(liste1, liste2):
+    finaList = []
+    listDif = 0
+    for i in range(len(liste1)):
+        finaList.append(liste1[i])
+        finaList.append(liste2[i])
+    if len(liste1) < len(liste2):
+        listDif = len(liste2) - len(liste1)
+        for i in range(listDif):
+            finaList.append(liste2[i + 2])
+    if len(liste1) > len(liste2):
+        listDif = len(liste1) - len(liste2)
+        for i in range(listDif):
+            finaList.append(liste1[i + 2])
+    return finaList
+
+
+assert entremele2([1,2], [5,6,7,8]) == [1,5,2,6,7,8], "entremele2()"
+
+
+########################### Exercice 11 ###########################
+
+def decale_gauche(a):
+    a.append(a.pop(0))
+    """append a la fin de a la valeur que l'on fait 'sauter' a l'index
+    0 (au début) """
+    return a
+
+assert decale_gauche([1,2,3]) == [2,3,1], "decale_gauche()"
+
+def decale_droite(a):
+    a.insert(0, a.pop(-1))
+    """insere a l'index 0(au début) la valeur que l'on fait 'sauter' a l'index
+    -1 (a la fin) """
+    return a
+
+assert decale_droite([1,2,3]) == [3,1,2], "decale_droite()"
+
+########################## Exercice 12 ###############################
+
+def decale_gauche_cran(a,n):
+    for i in range(n):
+        a.append(a.pop(0))
+    """append a la fin de a la valeur que l'on fait 'sauter' a l'index
+    0 (au début) """
+    return a
+
+assert decale_gauche_cran([1,2,3], 2) == [3,1,2], "decale_gauche_cran"
+assert decale_gauche_cran([4,5,6], 2) == [6,4,5], "decale_gauche_cran"
+
+
+def decale_droite_cran(a,n):
+    for i in range(n):
+        a.insert(0, a.pop(-1))
+    """append a la fin de a la valeur que l'on fait 'sauter' a l'index
+    0 (au début) """
+    return a
+
+assert decale_droite_cran([4,5,6], 2) == [5,6,4], "decale_gauche_cran"
+assert decale_droite_cran([1,2,3], 3) == [1,2,3], "decale_gauche_cran"
+
+########################## Exercice 13 #################################
+
+
+
+
+
+
+
+
+
+
