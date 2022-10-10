@@ -259,9 +259,21 @@ assert decale_droite_cran([1,2,3], 3) == [1,2,3], "decale_gauche_cran"
 
 ########################## Exercice 13 #################################
 
+def bin2dec(binaire):
+    dec = 0
+    position1 = position_valeur_mult(binaire, 1)
+    for i in range(len(position1)):
+        dec += 2 ** (len(binaire) - 1- position1[i])
+        print(position1[i])
+        print(dec)
+    print(dec)
+
+    return dec
 
 
+assert bin2dec([1,0,0,1,1]) == 19, "/!\ bin2dec()"
 
+def dec2bin(binaire)
 
 
 
