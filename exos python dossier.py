@@ -51,25 +51,26 @@ def position_minimum_multiple(a):
 assert position_minimum_multiple([-3,5,-9,-9,4,4]) == [2, 3], "/!\ position_minimum_multiple()"
 
 ########################################Exercice 4 #########################
+
 #1)
 
 def maximum(a):
-    max = a[0]
+    maxi = a[0]
     for i in range(len(a)):
-        if a[i] > max:
-            max = a[i]
-    return max
+        if a[i] > maxi:
+            maxi = a[i]
+    return maxi
 
 assert maximum([-3,5,-9,-9,4]) == 5, "/!\ maximum"
 
 #2)
 
 def position_maximum(a):
-    max = a[0]
+    maxi = a[0]
     max_pos = 0
     for i in range(len(a)):
-        if a[i] > max:
-            max = a[i]
+        if a[i] > maxi:
+            maxi = a[i]
             max_pos = i
     return max_pos
 
@@ -261,38 +262,59 @@ assert decale_droite_cran([1,2,3], 3) == [1,2,3], "decale_gauche_cran"
 
 ########################## Exercice 13 #################################
 
-def bin2dec(binaire):
-    dec = 0
-    position1 = position_valeur_mult(binaire, 1)
-    for i in range(len(position1)):
-        dec += 2 ** (len(binaire) - 1- position1[i])
+########################## Exercice 14 ##################################
 
-    return dec
+def mediane(valeurs):
+    croissant = sorted(valeurs)
+    mediane = 0
+    middleNumber = int(len(croissant)/2)
+    if len(croissant) % 2 == 0:
+        mediane = (croissant[middleNumber -1] + croissant[middleNumber])/2
+    elif len(croissant) % 2 != 0:
+        mediane = croissant[math.ceil(len(croissant)//2)]
 
-
-assert bin2dec([1,0,0,1,1]) == 19, "/!\ bin2dec()"
- 
-def dec2bin(decimal):
-    bin = []
-    
-
-    divResult = 0
-    while decimal > 2:
-        divResult = decimal % 2 
-        decimal = decimal // 2
-        bin.append(divResult)
-    binFormatted = ''.join(str(i) for i in bin)
-    print(binFormatted)
-    
-    print(' '.join([binFormatted[i:i+4] for i in range(0, len(binFormatted), 4)]))
-    return list(reversed(bin))
-
-assert dec2bin(123) == [1,1,1,0,1,1], "/!\ dec2bin"
-dec2bin(128)
- 
- 
+    return mediane
 
 
 
+assert mediane([3,5,-9,4,4]) == 4, "/!\ mediane()"
+assert mediane([1,2,3,4]) == 2.5, "/!\ fzfzef"
 
+############################ Exercice 15 ###########################
+
+def variance(x):
+    '''
+    Input/Output : liste de valeurs numériques(série statistique)/Variance
+    But : Calculer la variance d'une liste statistique
+    '''
+    n = len(x)
+    secondPart = 0
+    for i in range(n): #sigma n=1 et i=1
+         secondPart += (x[i] - moyenne(x))**2
+    V = 1/n * secondPart
+    return V
+
+assert variance([1,2,3,4,5]) == 2.0, "/!\ variance()"
+
+########################### Exercice 16 ##############################
+
+def ecart_type(a):
+    ecartT = math.sqrt(variance(a))
+    return ecartT
+
+assert ecart_type([1,2,3,4,5]) == 2**.5, "/!\ ecart_type()"
+
+
+########################### Exercice 17 ###############################
+
+def valeurs_sup(liste, valeur):
+    valeurSup = []
+    for i in range(len(liste)):
+        if liste[i] >= valeur:
+            valeurSup.append(liste[i])
+
+    return valeurSup
+
+assert valeurs_sup([1,2,3],1.5) == [2,3], "/!\ valeur_sup()"
+assert valeurs_sup([1,2,3],4) == [], "/!\ valeur_sup()"
 
