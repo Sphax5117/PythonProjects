@@ -6,7 +6,7 @@ def calculer_moyenne(notes):
     for i in range(len(notes)):
         assert notes[i] < 20, "/ ! \ Une note ne peux pas dépasser 20"
         assert notes[i] > 0, "/ ! \ Une note ne peux pas être négatif"
-    moyenne = sum(notes)/ len(notes)
+    moyenne = round(sum(notes)/ len(notes), 2)
     print(f"La moyenne est {moyenne}")
 
 def max_value(notes):
@@ -28,24 +28,24 @@ def value_under_8(notes):
     for i in range(len(notes)):
         if notes[i] < 8:
             under8.append(notes[i])
-    percent = (len(under8) * 100) / len(notes)
-    print(f"Le pourcentage de notes strictement inférieures à 8 est : {percent}")
+    percent = round((len(under8) * 100) / len(notes),2)
+    print(f"Le pourcentage de notes strictement inférieures à 8 est : {percent} %")
 
 def value_above_8_under_12(notes):
     notesComprises = []
     for i in range(len(notes)):
         if notes[i] <= 8 and notes[i] < 12:
             notesComprises.append(notes[i])
-    percent = (len(notesComprises) * 100) / len(notes)
-    print(f"Le pourcentage de notes inférieures ou égale à 8 et inférieure à 12 est : {percent}")
+    percent = round((len(notesComprises) * 100) / len(notes),2)
+    print(f"Le pourcentage de notes inférieures ou égale à 8 et inférieure à 12 est : {percent} % ")
 
 def value_above_12(notes):
     above12 = []
     for i in range(len(notes)):
         if notes[i] >= 12:
             above12.append(notes[i])
-    percent = (len(above12) * 100) / len(notes)
-    print(f"Le pourcentage de notes supérieur ou égal à 12 est : {percent}")
+    percent = round((len(above12) * 100) / len(notes),2)
+    print(f"Le pourcentage de notes supérieur ou égal à 12 est : {percent} % ")
 
 
 
