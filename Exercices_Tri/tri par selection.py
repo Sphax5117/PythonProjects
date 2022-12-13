@@ -20,7 +20,6 @@ def tri_select(nbr):
                 nbr[mini], nbr[index] = nbr[index], nbr[mini]
     return nbr
 
-# tri_select(nbr)
 
 
 def tri_select2(lst):

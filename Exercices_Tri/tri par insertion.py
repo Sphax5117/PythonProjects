@@ -1,6 +1,8 @@
 from random import randint
 from time import perf_counter
-
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import numpy as np
 lst = [2,35,38,15,50,27,100,33]
 def tri_insert(lst):
     """
@@ -19,5 +21,24 @@ for i in (10,100,1000,10000):
     d = perf_counter()
     tri_insert(lst)
     tps_insert.append((i, round((perf_counter() - d) * 10 **6,0)))
-for i in range(len(tps_insert)):
-    print(f"pour {tps_insert[i][0]} éléments n : on met {tps_insert[i][1]} secondes")
+# for i in range(len(tps_insert)):
+    # print(f"pour {tps_insert[i][0]} éléments n : on met {tps_insert[i][1]} secondes")
+
+# Unpack the data into separate lists for the x-values and y-values
+x, y = zip(*tps_insert)
+
+# Convert the y-values from seconds to minutes
+y = [val / 60 for val in y]
+
+# Create a figure and a subplot
+fig, ax = plt.subplots()
+
+# Plot the data as a line graph
+ax.plot(x, y)
+
+# Add labels to the x- and y-axes
+ax.set_xlabel("x")
+ax.set_ylabel("y (minutes)")
+
+# Show the plot
+plt.show()
