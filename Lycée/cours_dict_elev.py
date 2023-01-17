@@ -66,8 +66,23 @@ def villes(capitales, ville):
     return None ## Si pas trouvé, on retourne None
 
 
+
 assert villes(capitales, "Berlin") == "Allemagne", "/!\ villes()"
 assert villes(capitales, "Ankara") == None, "/!\ villes()"
+
+ages ={"tom":"16"}
+capitales ={"France":"Paris", "Allemagne":"Berlin", "Italie":"Rome", "Espagne":"Madrid", "Irlande":"Dublin", "Portugal":"Lisbonne", "Belgique":"Bruxelles", "Luxembourg":"Luxembourg", "Pays-Bas":"Amsterdam"}
+
+def prenom(age, prenom):
+    for k in age:
+        if age[k] == prenom:
+            print(k)
+            return k
+    print("None")
+
+prenom(ages, "16")
+    
+
 
 
 # Exo 14 p74
@@ -75,7 +90,6 @@ personnes ={"Jean Aymar":{"taille":178,"pays":"USA","age":31},"Clio Patre":{"pay
 def age(recherche, personnes):
     for i in personnes:
         if i == recherche:
-            print(personnes[i]["age"])
             return personnes[i]["age"]
     return None
 
@@ -87,7 +101,6 @@ def taille_moyenne(personnes):
     total = 0
     for i in personnes:
         total += personnes[i]["taille"]
-    print(total / len(personnes))
     return total / len(personnes)
 
 assert taille_moyenne(personnes) == 178.5, "/!\ taille_moyenne()"
@@ -139,7 +152,7 @@ def valeur_mot(mot):
         scoreFinal += alpha_scrabble(mot[i])[mot[i]]
         ## Retourne la valeur associée à la clé de la lettre.
 
-    print(scoreFinal)
+        return scoreFinal
 
 valeur_mot("pizza")
 

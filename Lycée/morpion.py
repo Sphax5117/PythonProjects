@@ -8,7 +8,6 @@ def fabric_grille():
     return grille
 
 grille = fabric_grille()
-couples = ('00','01','02','10','11','12','20','21','22')
 
 def afficher_grille(grille):
     for i in range(3):
@@ -16,7 +15,8 @@ def afficher_grille(grille):
         print( '|' + str('|'.join(grille[i])) + '|')
     return grille[i]
 
-def saisie(nom, grille, couples, sign):
+def saisie(nom, grille, sign):
+    couples = ('00','01','02','10','11','12','20','21','22')
     choice = input(f"{nom} ({sign}) => (format lignecolonne) : ")
     while choice not in couples:
         print("Erroné")
@@ -65,8 +65,8 @@ def jeu():
         if a == False or b == False:
             break
         print("list avec -")
-        saisie(joueur1, grille, couples, "x")
-        saisie(joueur2, grille, couples, "o")
+        saisie(joueur1, grille, "x")
+        saisie(joueur2, grille, "o")
 
 
 jeu()
