@@ -1,3 +1,4 @@
+# Créé par t.hausmann, le 14/09/2023 en Python 3.7
 # Créé par t.hausmann, le 12/09/2023 en Python 3.7
 
 ## Question 1
@@ -33,7 +34,6 @@ def impl():
     P = [8,5,2,4]
     while not estVide(P):
         empiler(pile, depiler(P))
-    print(pile)
 
     return pile
 
@@ -53,7 +53,7 @@ def hauteur_pile(P):
 
     return n
 
-hauteur_pile([8,5,2,4])
+
 
 # 2 fonction max_pile()
 
@@ -64,10 +64,8 @@ def max_pile(P, i):
         if P[-e] > max:
             maxPos = e
             max = P[-e]
-    print(maxPos)
     return maxPos
 
-max_pile([8,5,2,4], 3)
 
 # 3 fonction retourner()
 
@@ -78,11 +76,18 @@ def retourner(P, j):
     for i in range(1,j+1):
         pileAux.append(P[-i])
 
-    print(pileAux)
-
-retourner([8,5,2,4], 3)
+    return pileAux
 
 
+def tri_crepes(P):
+    NvPile = P
+    l = len(P)
+    for i in range(l):
+        maxPos = max_pile(NvPile, l)
+        NvPile = retourner(NvPile, maxPos)
+        NvPile = retourner(NvPile, l)
 
+        l -= 1
+    print("Pile triée : ", NvPile)
 
-
+tri_crepes([8,5,12,14,7])
