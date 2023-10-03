@@ -46,8 +46,30 @@ def rech_dicho_recur(L,v,d,f):
         elif L[m] == v:
             return m
 
+def fusion(l1, l2):
+    print(l1,l2)
+    if len(l1) == 0:
+        return l2
+    elif len(l2) == 0:
+        return l1
+    elif l1[0] < l2[0]:
+        return [l1[0]] + fusion(1, l2)
+    else:
+        return [l2[0]] + fusion(l1, 1)
 
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod(verbose = True)
+def tri_fusion(L):
+    n = len(L)
+    if n < 2:
+        return L
+    else:
+        middle = (0 + (len(L)-1))//2
+        return fusion(tri_fusion(L[0:middle+1]), tri_fusion(L[middle:(len(L)-1)]))
+
+print(fusion([5,4],[3,1]))
+##
+##if __name__ == "__main__":
+##    import doctest
+##    doctest.testmod(verbose = True)
+
+
 
